@@ -1,0 +1,3 @@
+Scripts to connect to the cloud using a docker file to perform actions from the frontend like adding data to the database... 
+
+--->> Scraping to the web should be done outside the fns file

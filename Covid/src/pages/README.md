@@ -1,0 +1,1 @@
+Cool. We have all of the components, now its time to put them together in a js file :0

@@ -1,0 +1,1 @@
+Handles all extraneous cases... fucntions should go here that dont communicate with the web, but end up returning data that will in turn be used by the fns directory 
