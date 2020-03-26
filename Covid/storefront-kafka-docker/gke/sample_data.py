@@ -22,12 +22,12 @@ def create_sample_data():
         'orders/actuator/health',
         'fulfillment/actuator/health',
         'accounts/customers/sample',
-        'orders/customers/sample/orders',
-        'orders/customers/sample/fulfill',
-        'fulfillment/fulfillments/sample/process',
-        'fulfillment/fulfillments/sample/ship',
-        'fulfillment/fulfillments/sample/in-transit',
-        'fulfillment/fulfillments/sample/receive']
+        'orders/customers/sample/cases',
+        'orders/customers/sample/expectedCases',
+        'fulfillment/mediaReportings/sample/process',
+        'fulfillment/mediaReportings/sample/ship',
+        'fulfillment/mediaReportings/sample/in-transit',
+        'fulfillment/mediaReportings/sample/receive']
 
     for sample_url in sample_urls:
         request_endpoint = storefront_api_url + '/' + sample_url
