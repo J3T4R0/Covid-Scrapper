@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<style type="text/css" id="dark-mode-custom-style"></style>
+	<link type="text/css" id="dark-mode" rel="stylesheet" href="">
+<head>
+	<title>
+		Linear Interpolator
+	</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<div id="pageContainer">
+      <div id="instructionsContainer">
+        <h1>Simple Linear Regression</h1>
+        <span>Add points by pressing <button class="defaultCursor">Push Point</button>.</span>
+        <br>
+        <span>
+          Remove points by pressing
+          <button class="defaultCursor">Pop Point</button> or
+          <button class="removeButton defaultCursor">X</button>.</span>
+        <br>
+        <span>Find the y-intercept and the slope by pressing <button class="runButton defaultCursor">Run</button>.</span>
+      </div>
+      <div class="row">
+        <div id="chartContainer">
+          <canvas id="pointChart" width="400" height="400" style="display: block;"></canvas>
+        </div>
+        <div id="uiContainer">
+        <div><div><div><b>Status: </b>Press run</div><div><b>Y-Intercept: </b>4.99999998083687</div><div><b>Slope: </b>-0.4285714245553931</div><div><b>PRESS Statistic: </b>2.9211072452307763</div></div><div><button>Push Point</button><button>Pop Point</button><button class="randomPointsButton">Random Points</button><button class="runButton">Run</button><div><li><input placeholder="Input the X Coordinate"><input placeholder="Input the Y Coordinate"><button class="removeButton">X</button></li><li><input placeholder="Input the X Coordinate"><input placeholder="Input the Y Coordinate"><button class="removeButton">X</button></li><li><input placeholder="Input the X Coordinate"><input placeholder="Input the Y Coordinate"><button class="removeButton">X</button></li></div></div></div></div>
+      </div>
+    <div id="logoContainer">
+      <a href="#" onclick="window.open('https://lettier.com')" title="Lettier.com">
+        <img id="logo" src="logo.png" width="250" height="250" alt="Lettier.com">
+      </a>
+    </div>
+    </div>
+	<div id="app"></div>
+    <script src="app.js"></script>
+    <script type="text/javascript" src="chrome-extension://aalppolilappfakpmdfdkpppdnhpgifn/installHook.js"></script>
+</body>
+</html>
