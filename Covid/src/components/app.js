@@ -51,6 +51,37 @@ require('./charts/Chart.Scatter')(Chart);
 
 window.Chart = module.exports = Chart;
 
+//very important
+import yPoints from "../models/data";  //positive correlation is good :)
+import mediaReportings from "../models/data";
+
+let nextId = 0;
+let Points;
+
+var newPoint =  {
+            id:0, 
+            x: Data_Maybe.Nothing.value, 
+            y: Data_Maybe.Nothing.value
+};
+
+for(i=0; i<30; i++) {
+    newPoint =  {
+            id: nextId++, 
+            x: mediaReportings[i], 
+            y: yPoints[i]
+    };
+    Points.push(newPoint);
+}
+
+var initialState = {
+    nextId: 0, 
+    points: Points[], 
+    yIntercept: Data_Maybe.Nothing.value, 
+    slope: Data_Maybe.Nothing.value, 
+    pressStatistic: Data_Maybe.Nothing.value, 
+    running: false
+};
+
 },{"./charts/Chart.Bar":2,"./charts/Chart.Bubble":3,"./charts/Chart.Doughnut":4,"./charts/Chart.Line":5,"./charts/Chart.PolarArea":6,"./charts/Chart.Radar":7,"./charts/Chart.Scatter":8,"./controllers/controller.bar":9,"./controllers/controller.bubble":10,"./controllers/controller.doughnut":11,"./controllers/controller.line":12,"./controllers/controller.polarArea":13,"./controllers/controller.radar":14,"./core/core.animation":15,"./core/core.canvasHelpers":16,"./core/core.controller":17,"./core/core.datasetController":18,"./core/core.element":19,"./core/core.helpers":20,"./core/core.interaction":21,"./core/core.js":22,"./core/core.layoutService":23,"./core/core.legend":24,"./core/core.plugin.js":25,"./core/core.scale":26,"./core/core.scaleService":27,"./core/core.ticks.js":28,"./core/core.title":29,"./core/core.tooltip":30,"./elements/element.arc":31,"./elements/element.line":32,"./elements/element.point":33,"./elements/element.rectangle":34,"./scales/scale.category":35,"./scales/scale.linear":36,"./scales/scale.linearbase.js":37,"./scales/scale.logarithmic":38,"./scales/scale.radialLinear":39,"./scales/scale.time":40}],2:[function(require,module,exports){
 'use strict';
 
