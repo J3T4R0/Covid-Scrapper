@@ -13,7 +13,7 @@ def main():
 
 
 def delete_databases():
-    dbs = ['accounts', 'orders', 'fulfillment']
+    dbs = ['expectedCases', 'cases', 'mediaReportings']
     for db in dbs:
         client.drop_database(db)
         print('MongoDB dropped: ' + db)
@@ -26,9 +26,9 @@ def delete_databases():
 
 def delete_topics():
     # call Kafka Manager API
-    topics = ['accounts.customer.change',
-              'orders.order.fulfill',
-              'fulfillment.order.change']
+    topics = ['expectedCases.customer.change',
+              'cases.cases.fulfill',
+              'mediaReportings.cases.change']
     for topic in topics:
         kafka_manager_url = 'http://localhost:9000/clusters/dev/topics/delete?t=' + topic
         r = requests.post(kafka_manager_url, data={'topic': topic})

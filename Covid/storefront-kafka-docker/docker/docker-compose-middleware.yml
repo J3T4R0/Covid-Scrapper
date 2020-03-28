@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   zuul:
-    image: garystafford/storefront-zuul:latest
+    image: J3T4R0/storefront-zuul:latest
     # expose:
     # - "8080"
     ports:
@@ -22,7 +22,7 @@ services:
     - kafka-net
 
   eureka:
-    image: garystafford/storefront-eureka:latest
+    image: J3T4R0/storefront-eureka:latest
     # expose:
     # - "8761"
     ports:
@@ -70,7 +70,7 @@ services:
     - "9092:9092/tcp"
     environment:
       KAFKA_ADVERTISED_HOST_NAME: kafka
-      KAFKA_CREATE_TOPICS: "accounts.customer.change:1:1,fulfillment.order.change:1:1,orders.order.fulfill:1:1"
+      KAFKA_CREATE_TOPICS: "expectedCases.customer.change:1:1,mediaReportings.cases.change:1:1,cases.cases.fulfill:1:1"
       KAFKA_ADVERTISED_PORT: 9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_DELETE_TOPIC_ENABLE: "true"

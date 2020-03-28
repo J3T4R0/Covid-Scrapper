@@ -5,11 +5,11 @@
 
 args=("$@")
 
-root="/Users/garystafford/Documents/projects"
+root="/Users/Ryan Niemi/Desktop/Covid/microservices"
 repos=(
-  storefront-demo-accounts
-  storefront-demo-orders
-  storefront-demo-fulfillment
+  storefront-demo-mediaReportings
+  storefront-demo-cases
+  storefront-demo-expectedCases
   storefront-eureka-server
   storefront-zuul-proxy
   storefront-kafka-docker
