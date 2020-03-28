@@ -1,0 +1,165 @@
+<?php
+$(document).on('change', '.file-upload-button', function(event) {
+			  var reader = new FileReader();
+
+			  reader.onload = function(event) {
+			    var jsonObj = JSON.parse(event.target.result);
+			    alert(jsonObj.name);
+			  }
+
+			  reader.readAsText(event.target.files[0]);
+			});
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		XHR
+	</title>
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<input class='file-upload-button' type="file" />
+	<br>
+	<div style="height:0px;overflow:hidden">
+    <form id="myForm" action="http://192.168.2.4/digiid/api/addid" 
+        method="post" enctype="multipart/form-data" runat="server">
+
+        <input type="file" name="file" id="file" onchange="showMyImage(this)" />
+        <input type="hidden" name="userid" value="<?php echo $_SESSION["userid"]?>">
+        <input type="hidden" id="inputfilename" name="filename" value="here">
+	    </form>
+	</div>
+
+<a class="button1" id="browseButton" onclick="getData()"  style="width:12%;height: 30px; text-decoration:none;"><font color="blue" size="5px">Test</font></a>
+<br/>
+
+	<div style="height:0px;overflow:hidden">
+    <form id="myForm" onsubmit="getData()" action="http://192.168.2.4/digiid/api/addid" 
+        method="post" enctype="multipart/form-data" runat="server">
+
+        <input type="file" name="file" id="file" onchange="showMyImage(this)" />
+        <input type="hidden" name="userid" value="<?php echo $_SESSION["userid"]?>">
+        <input type="submit" id="browseButton" name="httppath" value="here">
+	    </form>
+	</div>
+
+	<script type="text/javascript">
+		function getData() {
+				console.log("starting loop");
+		        var url1 = "mongodb+srv://dbuser:penny1234@cluster0-1etfc.gcp.mongodb.net/cases";
+		        var url2 = "mongodb+srv://dbuser:penny1234@cluster0-1etfc.gcp.mongodb.net/expectedCases";
+		        var url3 = "mongodb+srv://dbuser:penny1234@cluster0-1etfc.gcp.mongodb.net/mediaReportings";
+		        var formdata = $("#myForm").serialize();
+		        $.ajax({
+		            url: url1,
+		            type: 'POST',
+		            data:  formdata,
+		            dataType: 'json',
+		            cache: false,
+		            contentType: false,
+		            processData: false,
+		            success: function(response){
+		                if(response.status == "success"){
+		                    // Success
+		                    console.log("got data");
+		                    let casesData = response;
+		                } else {
+		                    // Failure
+		                    console.log("failure")
+		                }
+		            },
+		            error: function(response){
+		                // Error
+		                console.log("Something went wrong");
+		            }          
+		        });
+		       $.ajax({
+		            url: url2,
+		            type: 'POST',
+		            data:  formdata,
+		            dataType: 'json',
+		            cache: false,
+		            contentType: false,
+		            processData: false,
+		            success: function(response){
+		                if(response.status == "success"){
+		                    // Success
+		                    console.log("got data");
+		                    let expectedCasesData = response;
+
+
+		                } else {
+		                    // Failure
+		                    console.log("failure")
+		                }
+		            },
+		            error: function(response){
+		                // Error
+		                console.log("Something went wrong");
+
+		            }          
+		        });
+		       $.ajax({
+		            url: url3,
+		            type: 'POST',
+		            data:  formdata,
+		            dataType: 'json',
+		            cache: false,
+		            contentType: false,
+		            processData: false,
+		            success: function(response){
+		                if(response.status == "success"){
+		                    // Success
+		                    console.log("got data");
+		                    let mediaReportingsData = response;
+
+
+		                } else {
+		                    // Failure
+		                    console.log("failure")
+
+		                }
+		            },
+		            error: function(response){
+		                // Error
+		                console.log("Something went wrong");
+
+		            }          
+		        });
+		       console.log("exiting function loop");
+	}
+	</script>
+	
+	<br/>
+
+	<script type="text/javascript">
+		$.ajax({
+		  type: "POST",
+		  url: "~/getCases.py",
+		  data: { param: text}
+		}).done(function( o ) {
+		   // do something
+		   console.log("fetching Cases");
+		});
+		$.ajax({
+		  type: "POST",
+		  url: "~/getExpectedCases.py",
+		  data: { param: text}
+		}).done(function( o ) {
+		   // do something
+		   console.log("fetching Expected Cases");
+		});
+		$.ajax({
+		  type: "POST",
+		  url: "~/getMediaReportings.py",
+		  data: { param: text}
+		}).done(function( o ) {
+		   // do something
+		   console.log("fetching mediaReportings");
+		});
+	</script>
+</body>
+</html>
