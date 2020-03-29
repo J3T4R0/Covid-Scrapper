@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 page=requests.get('https://www.worldometers.info/coronavirus/country/us/')
 soup = BeautifulSoup(page.content,'html.parser')
-page2=requests.get('https://www.citypopulation.de/php/usa-states-admin.php')
+page2=requests.get('https://web.archive.org/web/20190306144030/https://www.citypopulation.de/php/usa-states-admin.php')
 soup2= BeautifulSoup(page2.content, 'html.parser')
 class corona:
 
@@ -43,7 +43,7 @@ class corona:
 
 
   #scrape names
-   popRef=soup2.find(id="ts")
+   popRef=soup2.find(id="tl")
    popName=popRef.findAll(itemprop="name")
    checker3='<span itemprop="name">'
    checker4='</span>'
@@ -54,8 +54,9 @@ class corona:
      h=str(g).replace(checker4,'')
      nameDict[h]=''
    del nameDict['District of Columbia']
+   del nameDict['USA']
    nameDict2=nameDict
- 
+   print(nameDict) 
 
    #scrape population
    popVal=popRef.findAll(class_="rpop prio5")
@@ -67,7 +68,7 @@ class corona:
        d=str(val).replace(checker2,'')
        e=str(d).replace(checker1,'')
        listPop.append(e)
-   
+   print(listPop)   
 
 
    #add vals
@@ -95,7 +96,8 @@ class corona:
       tempDict1[key]=val
 
    nameDict2=tempDict1
-   
+   print(nameDict2)
+   print(dict2) 
 
    #Makes Dictionary with percentages
    #dict2 is for the cases, nameDict2 is for populations
@@ -104,7 +106,7 @@ class corona:
       for key1 in nameDict2:
         if key==key1:
           heatDict[key]=10000*(int(dict2[key])/int(nameDict2[key1]))
-          
+          heatDict[key]=round(int(heatDict[key]))
    print(heatDict)
 u=corona()
 u.check()
