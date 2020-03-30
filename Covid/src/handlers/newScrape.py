@@ -106,6 +106,7 @@ class corona:
           heatDict[key]=10000*(int(dict2[key])/int(nameDict2[key1]))
           
    print(heatDict)
+   return (heatDict)
 u=corona()
 u.check()
 
